@@ -1,0 +1,8 @@
+Here are the bugs that are fixed to remove the valgrind errors/ the memory leaks in valgrind.test.c:
+
+1. Line 38: Increase the char* sentence size from 6 to 7 since it gives you a segmentation fault.
+2. Line 68: The iter should be changed to *iter since it gives you a memory leak.
+3. Add bug_info.num_bugs_on_mars = 0 since you need to remove the error of the conditional jump and initialize that variable to a value.
+4. Add bug_info.sentence[6] = NULL since you have increased the sentence size on Line 38.
+5. Add free(bug_info.sentence[6]) since you have increased the sentence size on Line 38.
+6. Remove free(bug_info.useless_bug) since it gives you a segmentation fault.

@@ -1,0 +1,94 @@
+Lab4 Report-
+
+Fork:
+
+Question 1: Which process prints this line? What is printed?
+
+    After fork, Process id = 394723
+    In Parent: 394722, Child id: 394723
+    Final statement from Process: 394722
+    After fork, Process id = 0
+
+    The child process prints this line: After fork, Process id = 394723.
+
+Question 2: What will be printed if this line is commented?
+    After fork, Process id = 395376
+    In Parent: 395375, Child id: 395376
+    Final statement from Process: 395375
+    After fork, Process id = 0
+    print after execlp
+    Final statement from Process: 395376
+
+Question 3: When is this line reached/printed?
+    This line, fprintf(stderr, "print after execlp\n"), is reached/printed when the ret is equal to 0 and after the execlp line.
+
+Question 4: What happens if the parent process is killed first? Uncomment the next two lines.
+    After fork, Process id = 396772
+    In Parent: 396771, Child id: 396772
+    Final statement from Process: 396771
+    After fork, Process id = 0 
+
+    The child process is finished if the parent process is killed.
+
+MFork:
+
+Question 1: How many processes are created? Explain.
+    Fork-1 was called from process: 397400
+    Fork-2 was called from process: 397400
+    Fork-3 was called from process: 397400
+    Fork-2 was called from process: 397401
+    Fork-3 was called from process: 397402
+    Fork-3 was called from process: 397401
+    Fork-3 was called from process: 397404 
+
+    There are 8 processes for 397400.
+    There are 4 processes for 397401.
+    There are 2 processes for 397402.
+    There are 2 processes for 397404.
+    So, there are 16 total processes.
+
+Pipe-Sync:
+
+Compile the pipe-sync file to see the desired output. The desired output of this file is- 
+
+    Child line 1
+    Parent line 1
+    Child line 2
+    Parent line 2
+
+Fifo_Producer and Fifo_Consumer:
+
+Question 1: What happens if you only launch a producer (but no consumer)?
+    If you launch a producer and don't launch a consumer, then the terminal will be blank since you haven't used the consumer to read the messages from the producer.
+    
+Question 2: What happens if you only launch a consumer (but no producer)?
+    If you launch a consumer and don't launch a producer, then the terminal will be blank since you haven't used the producer to write and send the messages to the consumer.
+
+Question 3: If one producer and multiple consumers, then who gets the message sent?
+    If one producer and multiple consumers are launched, then the message that is written by the producer is sent to the consumer that is the first one to compile. But the other consumers that are compiled after the first consumer is compiled won't get the same message.
+
+Question 4: Does the producer continue writing messages into the fifo, if there are no consumers?
+    If there are no consumers, then the producer won't continue to write and send the messages. The producer writes the message, but it exits without sending the message.
+    
+Question 5: What happens to the consumers, if all the producers are killed?
+    If the producers are killed, then the consumers will be finished. 
+
+Shared_Memory3:
+
+Question 1: Explain the output.
+    shared_buf before fork: First String
+    unshared_buf before fork: First String
+    shared_buf in child: First String
+    unshared_buf in child: First String
+    shared_buf after fork: Second String
+    unshared_buf after fork: First String
+
+    The allocation and the initialization in the shared_buf and the unshared_buf happen. Then, the child process function is called. It doesn't change the values of the shared_buf or the unshared_buf before the fork and when it's in the child. The value of the shared_buf after the fork changes, but the value of the unshared_buf after the fork doesn't change. 
+
+Thread-1:
+
+Question 1: Are changes made to the local or global variables by the child process reflected in the parent process? Explain. 
+    There are no changes for the global and the local variables by the child process that is reflected in the parent process since these variables are same.
+
+Question 2: Are changes made to the local or global variables by the child thread reflected in the parent process? Separately explain what happens for the local and global variables.
+    There are changes for the global and the local variables by the child thread that is reflected in the parent process since these variables are swapped.
